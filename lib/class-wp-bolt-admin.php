@@ -343,18 +343,13 @@
 			<?php 
 				$callback_url_arr = parse_url($consumer->callback);
 				$key = $callback_url_arr['scheme'].'://'.$callback_url_arr['host'];
-				// var_dump($callback_url_arr);
-				// echo '<hr/>';
 				$web_hook_arr = array(
 					'http://127.0.0.1' => 'http://127.0.0.1:8000/api/v1',
 					'http://dev.boltmedia.co' => 'http://bolt-dev-2.ap-southeast-1.elasticbeanstalk.com/api/v1',
 					'https://staging.boltmedia.co/' => 'https://staging-api.boltmedia.co/api/v1',
 					'https://app.boltmedia.co/' => 'https://api.boltmedia.co/api/v1',					
 				);
-				//echo $key;echo "<hr/>";
-				//$key = $consumer->callback;
 				$consumer->web_hook = $web_hook_arr[$key].'/wp-webhook/';
-				echo $consumer->web_hook;
 			 ?>
 			<!-- send to bolt platform -->
 			<form method="post" action="<?= $consumer->web_hook ?>">
