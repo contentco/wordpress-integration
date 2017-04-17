@@ -1,23 +1,58 @@
-=== Bolt Media Wordpress Integration ===
-Contributors: dev@boltmedia.co
-Tags: json, rest, api, rest-api,bolt media
+=== Bolt Platform Integration ===
+Contributors: Ye Min Htut, Timothy Li
+Donate link: http://example.com/
+Tags: content marketing, publishing, content strategy, content creation, brand content, native advertising
 Requires at least: 4.4
-Tested up to: 4.7.3
-Stable tag: 0.1.0
+Tested up to: 3.4
+Stable tag: 4.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
-
+ 
+WordPress publishing integration from the Bolt Content Platform.
+ 
 == Description ==
+ 
+This plugin enables you to connect your brand’s Bolt Account with your WordPress publication, enabling direct publication from content creators on our platform. Install this plugin and follow the instructions on the Bolt Platform to enable the integration for publication.
 
-That plugin extend WP REST API - OAuth 1.0a Server plugin to get the features of bolt media wordpress integration.
-
-This plugin only supports WordPress >= 4.4.
-
+ 
 == Installation ==
+ 
+This section describes how to install the plugin and get it working.
+ 
+e.g.
+ 
+1. Upload `plugin-name.php` to the `/wp-content/plugins/` directory
+1. Activate the plugin through the 'Plugins' menu in WordPress
+1. Place `&lt;?php do_action('plugin_name_hook'); ?&gt;` in your templates
+ 
+== Frequently Asked Questions ==
+ 
+= What is this plugin used for? =
+ 
+This plugin enables users of the Bolt Content Platform to publish directly to their WordPress website.
+ 
+= What does this plug in do exactly? =
+ 
+This plugin will help facilitate the download and installation of two official WordPress plugins that enable to you securely enable applications to connect to your Wordpress site. You can read more about those two plugins: [WP Rest API](https://wordpress.org/plugins/rest-api/) and [OAuth 1.0a Server](https://wordpress.org/plugins/rest-api-oauth1/) 
 
-Install the Bolt Media Integration plugin via the plugin directory, or by uploading the files manually to your server.
+Note that the WP REST API is only required for WordPress versions less than 4.7. Starting with 4.7, the REST API is included with WordPress installations
 
-That plugin extend WP REST API - OAuth 1.0a Server plugin to get the features of bolt media wordpress integration.
+= I’ve installed this plugin, what next? =
+ 
+In order for this plugin to work, you must be a registered brand with Bolt. You can sign up for an account via https://www.boltmedia.co
+ 
 
-To enable bolt media integration, you must install the <a href="https://wordpress.org/plugins-wp/rest-api/">Wordpress REST API</a> and the <a href="https://wordpress.org/plugins-wp/rest-api-oauth1/">Wordpress Oauth Server</a>.
-
+== Screenshots ==
+ 
+1. This screen shot description corresponds to screenshot-1.(png|jpg|jpeg|gif). Note that the screenshot is taken from
+the /assets directory or the directory that contains the stable readme.txt (tags or trunk). Screenshots in the /assets 
+directory take precedence. For example, `/assets/screenshot-1.png` would win over `/tags/4.3/screenshot-1.png` 
+(or jpg, jpeg, gif).
+2. This is the second screen shot
+ 
+== Changelog ==
+ 
+= 1.0 =
+* A change since the previous version.
+* Another change.
+ 

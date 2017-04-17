@@ -112,6 +112,7 @@
 	}
 
 	protected static function validate_parameters( $params ) {
+		//var_dump($params);exit;
 
 		$valid = array();
 
@@ -130,13 +131,6 @@
 		}
 		if ( ! empty( $params['callback'] ) ) {
 			$valid['callback'] = $params['callback'];
-		}
-
-		if ( empty( $params['web_hook'] ) ) {
-			return new WP_Error( 'rest_oauth1_missing_description', __( 'Web Hook URL is required and must be a valid URL.', 'rest_oauth1' ) );
-		}
-		if ( ! empty( $params['web_hook'] ) ) {
-			$valid['web_hook'] = $params['web_hook'];
 		}
 		return $valid;
 	}
@@ -342,14 +336,27 @@
 		<?php if ( ! empty( $consumer ) ): ?>
 			<?php 
 				$callback_url_arr = parse_url($consumer->callback);
-				$key = $callback_url_arr['scheme'].'://'.$callback_url_arr['host'];
-				$web_hook_arr = array(
-					'http://127.0.0.1' => 'http://127.0.0.1:8000/api/v1',
-					'http://dev.boltmedia.co' => 'http://bolt-dev-2.ap-southeast-1.elasticbeanstalk.com/api/v1',
-					'https://staging.boltmedia.co/' => 'https://staging-api.boltmedia.co/api/v1',
-					'https://app.boltmedia.co/' => 'https://api.boltmedia.co/api/v1',					
-				);
-				$consumer->web_hook = $web_hook_arr[$key].'/wp-webhook/';
+				
+				$key = $callback_url_arr['host'];
+				
+				switch ($key) {
+					case '127.0.0.1':
+						$consumer->web_hook = 'http://127.0.0.1:8000/api/v1/wp-webhook/';
+						break;
+
+					case 'dev.boltmedia.co':
+						$consumer->web_hook = 'http://bolt-dev-2.ap-southeast-1.elasticbeanstalk.com/api/v1/wp-webhook/';
+						break;
+
+					case 'staging.boltmedia.co':
+						$consumer->web_hook = 'https://staging-api.boltmedia.co/api/v1/wp-webhook/';
+						break;
+					
+					default:
+						$consumer->web_hook = 'https://api.boltmedia.co/api/v1/wp-webhook/';
+						break;
+				}
+				
 			 ?>
 			<!-- send to bolt platform -->
 			<form method="post" action="<?= $consumer->web_hook ?>">
